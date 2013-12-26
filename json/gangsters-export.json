@@ -9,7 +9,7 @@
   "name" : "Ricard",
   "password" : 123456,
   "alcohol" : 92,
-  "email" : "torres.rick@gmail.com",
+  "email" : "test@test.com",
   "id" : 1
 }, {
   "buildings" : {
@@ -22,6 +22,6 @@
   "name" : "Felman",
   "password" : 123456,
   "alcohol" : 94,
-  "email" : "miquel_felman@hotmail.com",
+  "email" : "test@test.com",
   "id" : 2
 } ]

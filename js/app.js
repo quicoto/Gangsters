@@ -14,6 +14,8 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
             $locationProvider.html5Mode(true); // Removed the #  Hashbang mode
     }])
 
+    // Build up the routes
+
 	 .config(['$routeProvider', function($routeProvider){
                 
                 $routeProvider
@@ -21,6 +23,11 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
                 		.when('/', {
                 			templateUrl: '/views/global-stats.html',
                 			controller: 'StatsCtrl'
+                		})
+
+                		.when('/me', {
+                			templateUrl: '/views/me.html',
+                			controller: 'MeCtrl'
                 		})
 
                         .when("/buildings/", {
@@ -33,8 +40,33 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
                         });
         }])
 
+	 .controller('MainCtrl', function($scope){
+
+	 })
+
+	 .controller('MenuCtrl', function($scope, $firebase, fbURL){
+
+	 	$scope.$watch('currentUser', function(newVal, oldVal, scope) { // the newVal of the full_name will be available here
+			
+	 		// Get the info from the current User and load it
+
+			if(newVal != undefined && (newVal != oldVal) ){
+
+				var ref = new Firebase(fbURL + "/" + newVal);
+		
+				$scope.me = $firebase(ref);
+
+				var data = $scope.me;
+
+				var buildings = data.buildings;
+				console.log(buildings);
+			}
+		});
+	 })
+
 	.controller('StatsCtrl', function($scope, $firebase, fbURL){
 
+		// Get all the Gangsters Stats
 
 		var ref = new Firebase(fbURL);
 		
@@ -43,5 +75,9 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 	})
 
 	.controller('BuildingsCtrl', function($scope){
+
+	})
+
+	.controller('MeCtrl', function($scope){
 
 	});

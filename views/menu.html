@@ -1,7 +1,17 @@
-<div class="pure-menu pure-menu-open pure-menu-horizontal">
+<div class="pure-menu pure-menu-open pure-menu-horizontal" ng-controller="MenuCtrl">
     <ul>
         <li><a ng-href="/"><i class="fa fa-home"></i> Home</a></li>
-        <li><a ng-href="buildings"><i class="fa fa-building-o"></i> Buildings</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+        <li><a ng-show="me" ng-href="buildings"><i class="fa fa-building-o"></i> Buildings</a></li>
+        <li>
+        	Who are you? 
+        	<select name="currentUser" ng-model="currentUser">
+        		<option value="">-</option>
+        		<option value="0">Ricard</option>
+        		<option value="1">Felman</option>
+        	</select>
+        </li>
     </ul>
+
+    <ng-include src="'/views/materials.html'"></ng-include>
+    
 </div>

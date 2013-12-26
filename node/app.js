@@ -22,4 +22,4 @@ var Firebase = require('firebase');
 	}
 	
 	
-	var intervalID = setInterval(addMaterials, 30000);
+	var intervalID = setInterval(addMaterials, 10000);

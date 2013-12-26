@@ -72,7 +72,7 @@ footer{
 
 #materials{
 
-	margin-top: 1em;
+	//margin-top: 1em;
 	background: @main-soft;
 	padding: 0.5em;
 
@@ -84,9 +84,27 @@ footer{
 }
 
 .pure-menu{
-	
-	li a{
-		.transition(all 0.2s linear);	
+
+	ul{
+		width: 100%;
+	}
+
+	li{
+
+		color: @main;
+
+		a{
+			.transition(all 0.2s linear);	
+		}
+
+		&:last-child{
+			float: right;
+			padding: 0.5em;
+
+			select{
+				margin-left: 0.5em;
+			}
+		}
 	}
 	
 
@@ -94,6 +112,10 @@ footer{
 
 		color: @main;
 		margin-right: 0.5em;
+	}
+
+	input[type="button"]{
+		color: @main;
 	}
 }
 
