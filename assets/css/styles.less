@@ -1,5 +1,7 @@
 @import (inline) "pure-mine.css";
 
+@import (inline) "font-awesome.min.css";
+
 /*-----------------------------------------------------------------------------------*/
 /* Variables */
 /*-----------------------------------------------------------------------------------*/
@@ -9,6 +11,12 @@
 /*-----------------------------------------------------------------------------------*/
 /* Functions */
 /*-----------------------------------------------------------------------------------*/
+
+
+.transition(@transition){
+  -webkit-transition: @transition;
+  transition: @transition;
+}
 
 /*-----------------------------------------------------------------------------------*/
 /* General */
@@ -73,4 +81,32 @@ footer{
 		margin-right: 1em;
 	}
 
+}
+
+.pure-menu{
+	
+	li a{
+		.transition(all 0.2s linear);	
+	}
+	
+
+	.fa{
+
+		color: @main;
+		margin-right: 0.5em;
+	}
+}
+
+
+#buildings{
+	span{
+		cursor: pointer;
+		margin-left: 1em;
+
+		.transition(all 0.2s linear);
+
+		&:hover{
+			padding-left: 0.5em;
+		}
+	}
 }

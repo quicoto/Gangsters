@@ -22,7 +22,7 @@
 	<script src="/js/app.js"></script>
 	
 </head>
-<body class="pure-skin-mine" ng-controller="MainCtrl">
+<body class="pure-skin-mine">
 
 	<ng-include src="'/views/header.html'"></ng-include>
 
@@ -34,27 +34,7 @@
 
 		<div id="actual-content">
 
-			<h2>Gangsters</h2>
-			
-			<ul ng-repeat="user in users">
-				<li>
-					{{user.name}}
-					<ul>
-						<li>Alcohol: {{user.alcohol}}</li>
-						<li>Guns: {{user.guns}}</li>
-						<li>Money: {{user.money}}</li>
-					</ul>
-
-					Buildings:
-
-					<ul>
-						<li>Laundry: {{user.buildings.laundry}}</li>
-						<li>Distillery: {{user.buildings.distillery}}</li>
-						<li>Smuggler: {{user.buildings.smuggler}}</li>
-					</ul>
-				</li>
-			</ul>
-
+			<div ng-view></div>
 
 		</div>
 	</div>

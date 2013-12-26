@@ -1,0 +1,21 @@
+
+<h2>Gangsters</h2>
+
+<ul ng-repeat="user in users">
+	<li>
+		{{user.name}}
+		<ul>
+			<li>Alcohol: {{user.alcohol}}</li>
+			<li>Guns: {{user.guns}}</li>
+			<li>Money: {{user.money}}</li>
+		</ul>
+
+		Buildings:
+
+		<ul>
+			<li>Laundry: {{user.buildings.laundry}}</li>
+			<li>Distillery: {{user.buildings.distillery}}</li>
+			<li>Smuggler: {{user.buildings.smuggler}}</li>
+		</ul>
+	</li>
+</ul>

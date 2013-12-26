@@ -1,6 +1,5 @@
 var Firebase = require('firebase');
 
-
 	// I've tried to loop through different users but something weird happens with Node.js and Firebase. I think there's an issue with the non-blocking code, it goes through before it can get the data. Need to look into it.
 	
 	// For now I'll hardcode just the 2 users
@@ -18,6 +17,8 @@ var Firebase = require('firebase');
 			Felman.once('value', function(data) {
 			 	Felman.update({alcohol : data.val().alcohol + 10,guns : data.val().guns + 10,money : data.val().money + 10});
 			});
+			
+			console.log('Materials updated');
 	}
 	
 	

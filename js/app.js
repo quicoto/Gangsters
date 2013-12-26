@@ -1,8 +1,8 @@
 angular.module('GangstersApp', ['ngRoute', 'firebase'])
 
-	// .run( function($rootScope){
-	// 	$rootScope.appVersion = '0.1';	
-	// })
+	 .run( function($rootScope){
+	 	$rootScope.appVersion = '0.1';	
+	 })
 
 	.value('fbURL', 'https://gangsters.firebaseio.com/')
  
@@ -10,7 +10,30 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 	  return $firebase(new Firebase(fbURL));
 	})
 
-	.controller('MainCtrl', function($scope, $firebase, fbURL){
+	.config(['$locationProvider', function($locationProvider){
+            $locationProvider.html5Mode(true); // Removed the #  Hashbang mode
+    }])
+
+	 .config(['$routeProvider', function($routeProvider){
+                
+                $routeProvider
+
+                		.when('/', {
+                			templateUrl: '/views/global-stats.html',
+                			controller: 'StatsCtrl'
+                		})
+
+                        .when("/buildings/", {
+                                templateUrl: '/views/buildings.html',
+                                controller: 'BuildingsCtrl'
+                        })
+                        
+                        .otherwise({
+                                redirectTo: '/'
+                        });
+        }])
+
+	.controller('StatsCtrl', function($scope, $firebase, fbURL){
 
 
 		var ref = new Firebase(fbURL);
@@ -30,5 +53,9 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 		    // user is logged out
 		  }
 		});
+
+	})
+
+	.controller('BuildingsCtrl', function($scope){
 
 	});
