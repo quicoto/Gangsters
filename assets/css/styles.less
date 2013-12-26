@@ -1,0 +1,76 @@
+@import (inline) "pure-mine.css";
+
+/*-----------------------------------------------------------------------------------*/
+/* Variables */
+/*-----------------------------------------------------------------------------------*/
+
+@main: #c0392b;
+@main-soft: #e74c3c;
+/*-----------------------------------------------------------------------------------*/
+/* Functions */
+/*-----------------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------------*/
+/* General */
+/*-----------------------------------------------------------------------------------*/
+
+html{
+	font-size:16px;
+}
+
+body{	
+	font-family: 'Open Sans', sans-serif;
+	background: @main-soft;
+	padding: 1em;
+	font-size: 1em;
+}
+
+*{
+	color: white;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+}
+
+div{
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box;   
+	box-sizing: border-box;     
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* Others */
+/*-----------------------------------------------------------------------------------*/
+
+header{
+	text-align: center;
+}
+
+#content{
+	max-width: 900px;
+	background-color: @main;	
+	padding: 1.5em;
+	margin: 0 auto;
+
+}
+
+#actual-content{
+	margin-top: 1em;
+}
+
+footer{
+	text-align: center;
+	padding: 1em 0;
+}
+
+#materials{
+
+	margin-top: 1em;
+	background: @main-soft;
+	padding: 0.5em;
+
+	div{
+		display: inline-block;
+		margin-right: 1em;
+	}
+
+}
