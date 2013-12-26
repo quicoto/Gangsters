@@ -14,11 +14,15 @@
 
 	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
 	<script src='https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js'></script>
-	
+
+	<script type='text/javascript'
+        src='https://cdn.firebase.com/v0/firebase-simple-login.js'>
+</script>
+
 	<script src="/js/app.js"></script>
 	
 </head>
-<body class="pure-skin-mine ">
+<body class="pure-skin-mine" ng-controller="MainCtrl">
 
 	<ng-include src="'/views/header.html'"></ng-include>
 
@@ -30,11 +34,27 @@
 
 		<div id="actual-content">
 
-			Lorem Ipsum is simply dummy text of the printing and ty<br >pesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, <br >when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-	<br >
-	It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-	<br >
-	It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			<h2>Gangsters</h2>
+			
+			<ul ng-repeat="user in users">
+				<li>
+					{{user.name}}
+					<ul>
+						<li>Alcohol: {{user.alcohol}}</li>
+						<li>Guns: {{user.guns}}</li>
+						<li>Money: {{user.money}}</li>
+					</ul>
+
+					Buildings:
+
+					<ul>
+						<li>Laundry: {{user.buildings.laundry}}</li>
+						<li>Distillery: {{user.buildings.distillery}}</li>
+						<li>Smuggler: {{user.buildings.smuggler}}</li>
+					</ul>
+				</li>
+			</ul>
+
 
 		</div>
 	</div>
