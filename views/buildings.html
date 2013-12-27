@@ -3,14 +3,14 @@
 	Upgrade a Building:
 
 	<p>
-		<span ng-click="updateBuilding('laundry')"><i class="fa fa-money"></i> Laundry {{me.buildings.laundry}}</span>
+		<span ng-click="updateBuilding('distillery')"><i class="fa fa-beer"></i> Distillery level {{me.buildings.distillery}} <em>(Alcohol cost: {{distilleryCost*me.buildings.distillery}} )</em></span>
 	</p>
 
 	<p>
-		<span ng-click="updateBuilding('distillery')"><i class="fa fa-beer"></i> Distillery {{me.buildings.distillery}}</span>
+		<span ng-click="updateBuilding('smuggler')"><i class="fa fa-truck"></i> Smuggler level {{me.buildings.smuggler}} <em>(Guns cost: {{smugglerCost*me.buildings.smuggler}} )</em></span>
 	</p>
 
 	<p>
-		<span ng-click="updateBuilding('smuggler')"><i class="fa fa-truck"></i> Smuggler {{me.buildings.smuggler}}</span>
+		<span ng-click="updateBuilding('laundry')"><i class="fa fa-money"></i> Laundry level {{me.buildings.laundry}} <em>(Money cost: {{laundryCost*me.buildings.laundry}} )</em></span>
 	</p>
 </div>
