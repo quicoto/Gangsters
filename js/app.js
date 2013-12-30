@@ -7,7 +7,7 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 	 	$rootScope.smugglerCost = 300;	
 	 })
 
-	.value('fbURL', 'https://gangsters.firebaseio.com/')
+	.constant('fbURL', 'https://gangsters.firebaseio.com/')
  
 	.factory('Users', function($firebase, fbURL) {
 	  return $firebase(new Firebase(fbURL));
@@ -47,11 +47,13 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 
 	 })
 
-	 .controller('MenuCtrl', function($rootScope, $scope, $firebase, fbURL){
+	 .controller('MenuCtrl', function($rootScope, $scope, $firebase, fbURL, $location){
 
 	 	$scope.$watch('currentUser', function(newVal, oldVal, scope) { // the newVal of the full_name will be available here
 			
 	 		// Get the info from the current User and load it
+
+	 		// Could this go into a service?
 
 			if(newVal != undefined && (newVal != oldVal) ){
 
@@ -73,6 +75,8 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 	})
 
 	.controller('BuildingsCtrl', function($rootScope, $scope, $firebase, fbURL){
+
+		$rootScope.page = 'buildings';
 
 		$scope.updateBuilding = function(building, scope){
 
