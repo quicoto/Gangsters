@@ -1,14 +1,14 @@
-angular.module('GangstersApp', ['ngRoute', 'firebase'])
+angular.module('GangstersApp', ['ngRoute', 'firebase', 'GangstersApp.services'])
 
 	 .run( function($rootScope){
 	 	$rootScope.appVersion = '0.1';
-	 	$rootScope.laundryCost = 100;	
-	 	$rootScope.distilleryCost = 200;	
-	 	$rootScope.smugglerCost = 300;	
+	 	$rootScope.laundryCost = 100;
+	 	$rootScope.distilleryCost = 200;
+	 	$rootScope.smugglerCost = 300;
 	 })
 
 	.constant('fbURL', 'https://gangsters.firebaseio.com/')
- 
+
 	.factory('Users', function($firebase, fbURL) {
 	  return $firebase(new Firebase(fbURL));
 	})
@@ -20,7 +20,7 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
     // Build up the routes
 
 	 .config(['$routeProvider', function($routeProvider){
-                
+
                 $routeProvider
 
                 		.when('/', {
@@ -37,7 +37,7 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
                                 templateUrl: '/views/buildings.html',
                                 controller: 'BuildingsCtrl'
                         })
-                        
+
                         .otherwise({
                                 redirectTo: '/'
                         });
@@ -50,7 +50,7 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 	 .controller('MenuCtrl', function($rootScope, $scope, $firebase, fbURL, $location){
 
 	 	$scope.$watch('currentUser', function(newVal, oldVal, scope) { // the newVal of the full_name will be available here
-			
+
 	 		// Get the info from the current User and load it
 
 	 		// Could this go into a service?
@@ -58,7 +58,7 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 			if(newVal != undefined && (newVal != oldVal) ){
 
 				var ref = new Firebase(fbURL + "/" + newVal);
-		
+
 				$rootScope.me = $firebase(ref);
 			}
 		});
@@ -69,9 +69,9 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 		// Get all the Gangsters Stats
 
 		var ref = new Firebase(fbURL);
-		
+
 		$scope.users = $firebase(ref);
-		
+
 	})
 
 	.controller('BuildingsCtrl', function($rootScope, $scope, $firebase, fbURL){
@@ -126,16 +126,16 @@ angular.module('GangstersApp', ['ngRoute', 'firebase'])
 
 			var ref = new Firebase(fbURL + "/" + $rootScope.me.id);
 
-			/* There's an issue here. How can I update the jSON object without losing data? 
-				On my first test I just updated like this:  buildings: {laundry:123}  
-				This destroyed distillery and smuggler. It doesn't seem right that I have to re-send 
+			/* There's an issue here. How can I update the jSON object without losing data?
+				On my first test I just updated like this:  buildings: {laundry:123}
+				This destroyed distillery and smuggler. It doesn't seem right that I have to re-send
 				the other two values.
 
 				Will do it for now for the sake of the example so I can move forward.
 			*/
 
 			ref.update({money : $rootScope.me.money, guns : $rootScope.me.guns, alcohol : $rootScope.me.alcohol, buildings :{ laundry: $rootScope.me.buildings.laundry, distillery: $rootScope.me.buildings.distillery, smuggler: $rootScope.me.buildings.smuggler }});
-			
+
 		};
 	})
 

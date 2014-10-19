@@ -2,8 +2,9 @@
     <ul>
         <li><a ng-href="/"><i class="fa fa-home"></i> Home</a></li>
         <li><a ng-show="me" ng-href="#/buildings"><i class="fa fa-building-o"></i> Buildings</a></li>
+        <li><a ng-show="me" ng-href="#/thugs"><i class="fa fa-group"></i> Thugs</a></li>
         <li>
-        	Who are you? 
+        	Who are you?
         	<select name="currentUser" ng-model="currentUser">
         		<option value="">-</option>
         		<option value="0">Ricard</option>
@@ -13,5 +14,5 @@
     </ul>
 
     <ng-include src="'/views/materials.html'"></ng-include>
-    
+
 </div>

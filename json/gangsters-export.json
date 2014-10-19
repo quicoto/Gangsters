@@ -1,27 +1,42 @@
-[ {
-  "buildings" : {
-    "distillery" : 2,
-    "laundry" : 3,
-    "smuggler" : 20
+{
+  "Users" : {
+    "0" : {
+      "buildings" : {
+        "distillery" : 2,
+        "laundry" : 3,
+        "smuggler" : 20
+      },
+      "guns" : 565,
+      "money" : 561,
+      "name" : "Ricard",
+      "password" : 123456,
+      "alcohol" : 562,
+      "email" : "test@test.com",
+      "id" : 0
+    },
+    "1" : {
+      "buildings" : {
+        "distillery" : 0,
+        "laundry" : 0,
+        "smuggler" : 0
+      },
+      "guns" : 561,
+      "money" : 561,
+      "name" : "Felman",
+      "password" : 123456,
+      "alcohol" : 564,
+      "email" : "test@test.com",
+      "id" : 1
+    }
   },
-  "guns" : 565,
-  "money" : 561,
-  "name" : "Ricard",
-  "password" : 123456,
-  "alcohol" : 562,
-  "email" : "test@test.com",
-  "id" : 0
-}, {
-  "buildings" : {
-    "distillery" : 0,
-    "laundry" : 0,
-    "smuggler" : 0
-  },
-  "guns" : 561,
-  "money" : 561,
-  "name" : "Felman",
-  "password" : 123456,
-  "alcohol" : 564,
-  "email" : "test@test.com",
-  "id" : 1
-} ]
+  "Constructions":{
+    "0" : {
+      "1" : {
+        "type" : "bulding",
+        "duration" : "3600",
+        "start" : "19:10:2014",
+        "end" : "19:10:2014"
+      }
+    }
+  }
+}
