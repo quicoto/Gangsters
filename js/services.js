@@ -27,7 +27,7 @@ angular.module('GangstersApp.services', [])
 
 	// AuthService is called in the App.js on the $routeChangeStart
 
-	.factory('AuthService', function($window, $http, $rootScope) {
+	.factory('AuthService', function($window, $http, $rootScope, $firebase) {
 
 		// We could maybe call the server here to check if the token is still valid?
 
@@ -37,23 +37,27 @@ angular.module('GangstersApp.services', [])
 				if ($window.sessionStorage.token){
 					//console.log('Token found, thanks! ' + $window.sessionStorage.token);
 
-					// Check against the server
+					// Look for the Token in Firebase
 
-					 $http
-				      .post('/backend/validToken')
-				      .success(function (data, status, headers, config) {
+          var firetoken = new Firebase(fbURL + "/Tokens/" + $window.sessionStorage.token);
 
-				      	$rootScope.currentUser = data;
+          console.log(firetoken);
 
-				      	// All good, go on.
-				      	return true;
-				      })
-				      .error(function (data, status, headers, config) {
-
-				        // Erase the token
-				        delete $window.sessionStorage.token;
-				        return false; // It will redirect the user to the login page
-				      });
+					//  $http
+				  //     .post('/backend/validToken')
+				  //     .success(function (data, status, headers, config) {
+           //
+				  //     	$rootScope.currentUser = data;
+           //
+				  //     	// All good, go on.
+				  //     	return true;
+				  //     })
+				  //     .error(function (data, status, headers, config) {
+           //
+				  //       // Erase the token
+				  //       delete $window.sessionStorage.token;
+				  //       return false; // It will redirect the user to the login page
+				  //     });
 
 					return true;
 				}else{

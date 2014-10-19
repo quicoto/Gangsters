@@ -4,12 +4,7 @@
         <li><a ng-show="me" ng-href="#/buildings"><i class="fa fa-building-o"></i> Buildings</a></li>
         <li><a ng-show="me" ng-href="#/thugs"><i class="fa fa-group"></i> Thugs</a></li>
         <li>
-        	Who are you?
-        	<select name="currentUser" ng-model="currentUser">
-        		<option value="">-</option>
-        		<option value="0">Ricard</option>
-        		<option value="1">Felman</option>
-        	</select>
+        	Hello {{rootScope.me.name}}! <i class="fa fa-smile-o"></i>        	
         </li>
     </ul>
 

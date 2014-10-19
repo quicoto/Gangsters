@@ -9,8 +9,30 @@ angular.module('GangstersApp', ['ngRoute', 'firebase', 'GangstersApp.services'])
 
 	.constant('fbURL', 'https://gangsters.firebaseio.com/')
 
-	.factory('Users', function($firebase, fbURL) {
-	  return $firebase(new Firebase(fbURL));
+	// Add the interceptor defined in services.js to send the Token to each http request
+
+	.config(function ($httpProvider) {
+		$httpProvider.interceptors.push('authInterceptor');
+	})
+
+	// Watch the $routeChangeStart to check if the user is logged in
+
+	.run(function($rootScope, AuthService, $location) { $rootScope.$on('$routeChangeStart',
+		function(evt, next, current) {
+
+		// Check if the user needs to be autenticated in the next page
+
+			if( next.authenticate ){
+
+				if (!AuthService.checkToken()) {
+
+					// Redirect to login page
+
+					$location.path('/');
+
+				}
+			}
+		})
 	})
 
 	.config(['$locationProvider', function($locationProvider){
@@ -25,22 +47,25 @@ angular.module('GangstersApp', ['ngRoute', 'firebase', 'GangstersApp.services'])
 
                 		.when('/', {
                 			templateUrl: '/views/global-stats.html',
-                			controller: 'StatsCtrl'
+                			controller: 'StatsCtrl',
+											authenticate: false
                 		})
 
                 		.when('/me', {
                 			templateUrl: '/views/me.html',
-                			controller: 'MeCtrl'
+                			controller: 'MeCtrl',
+											authenticate: true
                 		})
 
-                        .when("/buildings/", {
-                                templateUrl: '/views/buildings.html',
-                                controller: 'BuildingsCtrl'
-                        })
+                    .when("/buildings/", {
+                            templateUrl: '/views/buildings.html',
+                            controller: 'BuildingsCtrl',
+														authenticate: true
+                    })
 
-                        .otherwise({
-                                redirectTo: '/'
-                        });
+                    .otherwise({
+                            redirectTo: '/'
+                    });
         }])
 
 	 .controller('MainCtrl', function($scope){
@@ -65,12 +90,6 @@ angular.module('GangstersApp', ['ngRoute', 'firebase', 'GangstersApp.services'])
 	 })
 
 	.controller('StatsCtrl', function($scope, $firebase, fbURL){
-
-		// Get all the Gangsters Stats
-
-		var ref = new Firebase(fbURL);
-
-		$scope.users = $firebase(ref);
 
 	})
 

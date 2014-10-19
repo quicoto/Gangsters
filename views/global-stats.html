@@ -1,21 +1,22 @@
+<div ng-show="!me">
 
-<h2>All Gangsters</h2>
+	<h2>Log in to start playing</h2>
 
-<ul ng-repeat="user in users">
-	<li>
-		{{user.name}}
-		<ul>
-			<li>Alcohol: {{user.alcohol}}</li>
-			<li>Guns: {{user.guns}}</li>
-			<li>Money: {{user.money}}</li>
-		</ul>
+	<form class="pure-form pure-form-aligned" name="login" id="login">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Type your email" required>
+        </div>
 
-		Buildings:
+				<div class="pure-control-group">
+						<label for="password">Password</label>
+						<input id="password" type="password" placeholder="Your super secret password" required>
+				</div>
 
-		<ul>
-			<li>Laundry: {{user.buildings.laundry}}</li>
-			<li>Distillery: {{user.buildings.distillery}}</li>
-			<li>Smuggler: {{user.buildings.smuggler}}</li>
-		</ul>
-	</li>
-</ul>
+        <div class="pure-controls">
+            <button type="submit" class="pure-button">Log in</button>
+        </div>
+    </fieldset>
+</form>
+</div>
